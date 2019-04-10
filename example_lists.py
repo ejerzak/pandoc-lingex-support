@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import pandocfilters as pf
-# import re
 
 def latex(x):
     return pf.RawInline('latex', x)
@@ -20,14 +19,10 @@ def is_label(key, value):
 def label_name(key, value):
     if is_label(key, value):
         return str(value[0][0])
-    else:
-        return None
     
 def makelabel(key, value, format, meta):
     if is_label(key, value):
         return [latex('\\label{' + label_name(key, value) + '}')]
-    else:
-        return None
     
 # # This deals with the references.      
 def is_reference(key, value):
@@ -43,14 +38,10 @@ def is_reference(key, value):
 def ref_name(key, value):
     if is_reference(key, value):
         return value[1][0]['c']
-    else:
-        return None
 
 def makeref(key, value, format, meta):
     if is_reference(key, value):
         return [latex('(\\ref{' + ref_name(key, value) + '})')]
-    else:
-        return None
     
 if __name__ == '__main__':
     pf.toJSONFilters([makelabel, makeref])
