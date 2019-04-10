@@ -10,6 +10,6 @@ Will convert:
 
 Intended use with the lingex package:
 
-`\\ex. This is my example. <<ex:foo>>`
+`\ex. This is my example. <<ex:foo>>`
 
 `As [[ex:foo]] shows, we're all fucked.`
