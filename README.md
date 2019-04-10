@@ -5,11 +5,11 @@ org links.
 
 Will convert:
 
-- "<<ex:foo>>" to "\label{ex:foo}"
-- "[[ex:foo]]" to "\ref{ex:foo}"
+- `<<ex:foo>>` to `\label{ex:foo}`
+- `[[ex:foo]]` to `\ref{ex:foo}`
 
 Intended use with the lingex package:
 
-\\ex. This is my example. <<ex:foo>>
+`\\ex. This is my example. <<ex:foo>>`
 
-As [[ex:foo]] shows, we're all fucked.
+`As [[ex:foo]] shows, we're all fucked.`
