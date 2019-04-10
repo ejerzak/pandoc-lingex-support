@@ -1,7 +1,9 @@
+# Pandoc lingex support 
+
 A pandoc filter that exports latex labels and references from internal
 org links.
 
-# Use
+## Use
 
 Will convert:
 
