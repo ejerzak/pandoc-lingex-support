@@ -2,8 +2,9 @@
 
 import pandocfilters as pf
 
-def latex(x):
-    return pf.RawInline('latex', x)
+def as_latex(s):
+    "Returns string s as a raw latex inline"
+    return pf.RawInline('latex', s)
 
 # This deals with the labels.
 def is_label(key, value):
@@ -16,13 +17,12 @@ def is_label(key, value):
     else:
         return False
 
-def label_name(key, value):
-    if is_label(key, value):
-        return str(value[0][0])
+def label_name(label_value):
+    return str(label_value[0][0])
     
 def makelabel(key, value, format, meta):
     if is_label(key, value):
-        return [latex('\\label{' + label_name(key, value) + '}')]
+        return [as_latex('\\label{' + label_name(value) + '}')]
     
 # # This deals with the references.      
 def is_reference(key, value):
@@ -35,13 +35,12 @@ def is_reference(key, value):
     else:
         return False
 
-def ref_name(key, value):
-    if is_reference(key, value):
-        return value[1][0]['c']
+def ref_name(ref_value):
+    return ref_value[1][0]['c']
 
 def makeref(key, value, format, meta):
     if is_reference(key, value):
-        return [latex('(\\ref{' + ref_name(key, value) + '})')]
+        return [as_latex('(\\ref{' + ref_name(value) + '})')]
     
 if __name__ == '__main__':
     pf.toJSONFilters([makelabel, makeref])
