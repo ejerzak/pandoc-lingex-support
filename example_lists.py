@@ -38,7 +38,7 @@ def ref_name(ref_value):
 
 def makeref(key, value, format, meta):
     if is_reference(key, value):
-        return [as_latex('(\\ref{' + ref_name(value) + '})')]
+        return [as_latex('\\ref{' + ref_name(value) + '}')]
     
 if __name__ == '__main__':
     pf.toJSONFilters([makelabel, makeref])
